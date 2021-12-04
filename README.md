@@ -11,12 +11,12 @@ cargo install manifest-gen
 ## Usage
 
 ```sh
-manifest-gen image.png
+manifest-gen icon.png
 ```
 
-`image.png` is the image of your pwa.
+`icon.png` is the image of your pwa.
 
 ### What does it do?
 
-- Resizes the give image to appropriate sizes
-- Asks a bunch of question and fills them in the appropriate fields
+- Resizes the given image to appropriate sizes
+- Asks a bunch of questions and fills in the fields in the manifest.json
