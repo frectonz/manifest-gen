@@ -1,17 +1,7 @@
 use clap::clap_app;
 use std::fs::File;
 
-mod display;
-mod icons;
-mod logger;
-mod manifest;
-mod orientation;
-mod prompts;
-
-use display::DisplayMode;
-use icons::generate_icons;
-use manifest::input_manifest;
-use orientation::Orientation;
+use manifest_gen::adapters::{IconGenerator, ManifestBuilder};
 
 fn main() {
     let matches = clap_app!(app =>
@@ -22,15 +12,11 @@ fn main() {
     )
     .get_matches();
 
-    let image_filename = matches.value_of("IMAGE").expect("No image provided.");
+    let filename = matches.value_of("IMAGE").expect("No image provided");
 
-    let icons = generate_icons(image_filename);
-
-    let mut manifest = input_manifest();
-
-    manifest.add_icons(icons);
+    let icons = IconGenerator::generate_icons(filename).expect("Failed to generate icon");
+    let manifest = ManifestBuilder::build_manifest(icons);
 
     let file = File::create("manifest/manifest.json").expect("Failed creating manifest.json");
-
     serde_json::to_writer_pretty(file, &manifest).expect("Failed serializing your inputs");
 }

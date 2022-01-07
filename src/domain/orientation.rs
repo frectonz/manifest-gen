@@ -16,9 +16,25 @@ pub enum Orientation {
     PortraitSecondary,
 }
 
+impl Orientation {
+    pub fn all() -> Vec<Self> {
+        vec![
+            Orientation::Any,
+            Orientation::Natural,
+            Orientation::Landscape,
+            Orientation::LandscapePrimary,
+            Orientation::LandscapeSecondary,
+            Orientation::Portrait,
+            Orientation::PortraitPrimary,
+            Orientation::PortraitSecondary,
+        ]
+    }
+}
+
 impl Display for Orientation {
     fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
         use Orientation::*;
+
         match self {
             Any => write!(f, "any"),
             Natural => write!(f, "natural"),

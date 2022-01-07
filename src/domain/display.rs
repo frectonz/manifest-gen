@@ -12,9 +12,21 @@ pub enum DisplayMode {
     Browser,
 }
 
+impl DisplayMode {
+    pub fn all() -> Vec<Self> {
+        vec![
+            DisplayMode::FullScreen,
+            DisplayMode::Standalone,
+            DisplayMode::MinimalUI,
+            DisplayMode::Browser,
+        ]
+    }
+}
+
 impl Display for DisplayMode {
     fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
         use DisplayMode::*;
+
         match self {
             FullScreen => write!(f, "fullscreen"),
             Standalone => write!(f, "standalone"),

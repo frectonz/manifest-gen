@@ -5,7 +5,7 @@ pub fn ask_for_string(question: &str, default: &str) -> String {
     Text::new(question)
         .with_default(default)
         .prompt()
-        .unwrap_or_else(|_| String::from(default))
+        .unwrap_or(String::from(default))
 }
 
 pub fn ask_for_select<T: Display>(question: &str, options: Vec<T>, default: T) -> T {
