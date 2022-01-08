@@ -1,7 +1,7 @@
 use clap::clap_app;
 use std::fs::File;
 
-use manifest_gen::adapters::{IconGenerator, ManifestBuilder};
+use manifest_gen::interactors::{IconGenerator, ManifestBuilder};
 
 fn main() {
     let matches = clap_app!(app =>

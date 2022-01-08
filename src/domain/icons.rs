@@ -1,18 +1,14 @@
 use serde::{ser::SerializeStruct, Serialize, Serializer};
 
-#[derive(Debug, Default)]
+#[derive(Debug)]
 pub struct Icon {
     src: String,
     sizes: String,
 }
 
 impl Icon {
-    pub fn set_src(&mut self, src: String) {
-        self.src = src;
-    }
-
-    pub fn set_sizes(&mut self, sizes: String) {
-        self.sizes = sizes;
+    pub fn new(src: String, sizes: String) -> Self {
+        Self { src, sizes }
     }
 }
 
