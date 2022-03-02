@@ -1,10 +1,12 @@
+use anyhow::Result as AnyhowResult;
 use clap::clap_app;
 use std::fs::File;
 
 use manifest_gen::interactors::{IconGenerator, ManifestBuilder};
 
-fn main() {
+fn main() -> AnyhowResult<()> {
     let matches = clap_app!(app =>
+        (name: "manifest-gen")
         (version: "1.0")
         (author: "Fraol Lemecha <fraol0912@gmail.com>")
         (about: "Generates a manifest.json for your PWA")
@@ -12,11 +14,16 @@ fn main() {
     )
     .get_matches();
 
-    let filename = matches.value_of("IMAGE").expect("No image provided");
+    // we can safely unwrap because the argument is required
+    let filename = matches.value_of("IMAGE").unwrap();
 
-    let icons = IconGenerator::generate_icons(filename).expect("Failed to generate icon");
+    let icons = IconGenerator::generate_icons(filename)?;
     let manifest = ManifestBuilder::build_manifest(icons);
 
-    let file = File::create("manifest/manifest.json").expect("Failed creating manifest.json");
-    serde_json::to_writer_pretty(file, &manifest).expect("Failed serializing your inputs");
+    let file = File::create("manifest/manifest.json")?;
+    serde_json::to_writer_pretty(file, &manifest)?;
+
+    println!("🎉 Successfully created the manifest");
+
+    Ok(())
 }

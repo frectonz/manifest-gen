@@ -9,6 +9,7 @@ repository = "https://github.com/fraol0912/manifest-gen"
 homepage = "https://github.com/fraol0912/manifest-gen"
 
 [dependencies]
+anyhow = "1.0"
 clap = "2.27.0"
 inquire = "0.2.1"
 image = "0.23.14"
