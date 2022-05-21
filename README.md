@@ -2,6 +2,10 @@
 
 `manifest-gen` is a CLI tool that helps you in creating a `manifest.json` file for your pwa.
 
+## Demo
+
+[![asciicast](https://asciinema.org/a/496160.svg)](https://asciinema.org/a/496160)
+
 ## Installation
 
 ```sh
