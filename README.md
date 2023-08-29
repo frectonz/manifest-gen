@@ -2,6 +2,12 @@
 
 `manifest-gen` is a CLI tool that helps you in creating a `manifest.json` file for your pwa.
 
+## Run it with Nix
+
+```bash
+nix run github:frectonz/manifest-gen
+```
+
 ## Demo
 
 [![asciicast](https://asciinema.org/a/496160.svg)](https://asciinema.org/a/496160)
