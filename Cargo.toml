@@ -1,12 +1,12 @@
 [package]
 name = "manifest-gen"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2018"
 license = "MIT"
 description = "A manifest.json generator"
 readme = "README.md"
-repository = "https://github.com/fraol0912/manifest-gen"
-homepage = "https://github.com/fraol0912/manifest-gen"
+repository = "https://github.com/frectonz/manifest-gen"
+homepage = "https://github.com/frectonz/manifest-gen"
 
 [dependencies]
 anyhow = "1.0"
